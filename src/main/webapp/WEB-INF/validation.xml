@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE form-validation PUBLIC
+        "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.3.0//EN"
+        "http://jakarta.apache.org/commons/dtds/validator_1_3_0.dtd">
+
+<form-validation>
+    <global>
+        <constant>
+            <constant-name>phone</constant-name>
+            <constant-value>^\(?(\d{3})\)?[-| ]?(\d{3})[-| ]?(\d{4})$</constant-value>
+        </constant>
+        <constant>
+            <constant-name>zip</constant-name>
+            <constant-value>^\d{5}\d*$</constant-value>
+        </constant>
+        <constant>
+            <constant-name>currency</constant-name>
+            <constant-value>^\d{1,3}(,?\d{1,3})*\.?(\d{1,2})?$</constant-value>
+        </constant>
+    </global>
+    <formset>
+        <form name="fileUpload">
+            <field property="name" depends="required">
+                <arg key="uploadForm.name"/>
+            </field>
+            <!-- Client-side Javascript won't catch this in IE, but server-side will -->
+            <field property="file" depends="required">
+                <arg key="uploadForm.file"/>
+            </field>
+        </form>
+        <form name="user">
+            <field property="username" depends="required">
+                <arg key="user.username"/>
+            </field>
+            <field property="firstName" depends="required">
+                <arg key="user.firstName"/>
+            </field>
+            <field property="lastName" depends="required">
+                <arg key="user.lastName"/>
+            </field>
+            <field property="email" depends="required,email">
+                <arg key="user.email"/>
+            </field>
+            <field property="passwordHint" depends="required">
+                <arg key="user.passwordHint"/>
+            </field>
+        </form>
+
+        <form name="personCard">
+            <field property="nAmbCard" depends="required">
+                <arg key="personCard.nAmbCard"/>
+            </field>
+            <field property="fullName" depends="required">
+                <arg key="personCard.fullName"/>
+            </field>
+            <field property="dateOfBirth" depends="required">
+                <arg key="personCard.dateOfBirth"/>
+            </field>
+            <field property="sex" depends="required">
+                <arg key="personCard.sex"/>
+            </field>
+            <field property="height" depends="required">
+                <arg key="personCard.height"/>
+            </field>
+            <field property="massBody" depends="required">
+                <arg key="personCard.massBody"/>
+            </field>
+            <field property="sad" depends="required">
+                <arg key="personCard.sad"/>
+            </field>
+            <field property="dad" depends="required">
+                <arg key="personCard.dad"/>
+            </field>
+            <field property="label" depends="required">
+                <arg key="personCard.label"/>
+            </field>
+            <field property="waistCircum" depends="required">
+                <arg key="personCard.waistCircum"/>
+            </field>
+            <field property="hipCircum" depends="required">
+                <arg key="personCard.hipCircum"/>
+            </field>
+            <field property="bloodAnalyze.hgb" depends="required">
+                <arg key="bloodAnalyze.hgb"/>
+            </field>
+            <field property="bloodAnalyze.rbc" depends="required">
+                <arg key="bloodAnalyze.rbc"/>
+            </field>
+            <field property="bloodAnalyze.wbc" depends="required">
+                <arg key="bloodAnalyze.wbc"/>
+            </field>
+            <field property="bloodAnalyze.xolesterin" depends="required">
+                <arg key="bloodAnalyze.xolesterin"/>
+            </field>
+            <field property="bloodAnalyze.saxar" depends="required">
+                <arg key="bloodAnalyze.saxar"/>
+            </field>
+        </form>
+
+        <form name="signup" extends="user">
+            <field property="password" depends="required">
+                <arg key="user.password"/>
+            </field>
+        </form>
+    </formset>
+</form-validation>
